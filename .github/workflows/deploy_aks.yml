@@ -56,6 +56,7 @@ jobs:
           use-kubelogin: 'true' # This must be true to use the tool above
       id: login
 
+      
     - name: Configure deployment
       uses: azure/k8s-bake@v3
       with:
