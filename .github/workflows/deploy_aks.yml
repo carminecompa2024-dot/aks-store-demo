@@ -36,9 +36,12 @@ jobs:
       uses: azure/CLI@61bb69d64d613b52663984bf12d6bac8fd7b3cc8
       with:
         azcliversion: 2.29.1
-        inlineScript: |
-          az configure --defaults acr=${{ env.AZURE_CONTAINER_REGISTRY }}
-          az acr build -t  ${{ env.REGISTRY_URL }}/${{ env.PROJECT_NAME }}:${{ github.sha }}
+       inlineScript: |
+          az acr build \
+            --registry ${{ env.AZURE_CONTAINER_REGISTRY }} \
+            --image store-front:${{ github.sha }} \
+            --file src/store-front/Dockerfile \
+            src/store-front/
 
     - name: Gets K8s context
       uses: azure/aks-set-context@94ccc775c1997a3fcfbfbce3c459fec87e0ab188
