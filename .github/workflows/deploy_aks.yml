@@ -42,12 +42,18 @@ jobs:
             --image store-front:${{ github.sha }} \
             --file src/store-front/Dockerfile \
             src/store-front/
+    # 1. Install kubelogin
+    - name: Set up kubelogin
+      uses: azure/use-kubelogin@v1
+      with:
+        kubelogin-version: 'v0.0.24'
 
     - name: Gets K8s context
       uses: azure/aks-set-context@v4
       with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+          use-kubelogin: 'true' # This must be true to use the tool above
       id: login
 
     - name: Configure deployment
