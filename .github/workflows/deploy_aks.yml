@@ -36,7 +36,7 @@ jobs:
       uses: azure/CLI@61bb69d64d613b52663984bf12d6bac8fd7b3cc8
       with:
         azcliversion: 2.29.1
-       inlineScript: |
+        inlineScript: |
           az acr build \
             --registry ${{ env.AZURE_CONTAINER_REGISTRY }} \
             --image store-front:${{ github.sha }} \
