@@ -56,7 +56,7 @@ jobs:
           use-kubelogin: 'true' # This must be true to use the tool above
       id: login
 
-      
+
     - name: Configure deployment
       uses: azure/k8s-bake@v3
       with:
@@ -75,6 +75,6 @@ jobs:
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
-          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.PROJECT_NAME }}:${{ github.sha }}
+          ${{ env.REGISTRY_URL }}/store-front:${{ github.sha }}
         imagepullsecrets: |
           ${{ env.PROJECT_NAME }}
