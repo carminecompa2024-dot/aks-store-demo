@@ -51,7 +51,7 @@ jobs:
       id: login
 
     - name: Configure deployment
-      uses: azure/k8s-bake@61041e8c2f75c1f01186c8f05fb8b24e1fc507d8
+      uses: azure/k8s-bake@v3
       with:
         renderEngine: 'helm'
         helmChart: ${{ env.CHART_PATH }}
@@ -64,7 +64,7 @@ jobs:
 
 
     - name: Deploys application
-      uses: Azure/k8s-deploy@dd4bbd13a5abd2fc9ca8bdcb8aee152bb718fa78
+      uses: Azure/k8s-deploy@v5
       with:
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
         images: |
