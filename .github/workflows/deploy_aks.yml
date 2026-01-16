@@ -12,7 +12,7 @@ name: Build and deploy to Azure Kubernetes Service
 env:
   AZURE_CONTAINER_REGISTRY: registry16012026  # set this to the name of your container registry
   PROJECT_NAME: aks-deploy              # set this to your project's name
-  RESOURCE_GROUP: ask-group         # set this to the resource group containing your AKS cluster
+  RESOURCE_GROUP: aks-group         # set this to the resource group containing your AKS cluster
   CLUSTER_NAME: aks-cluster              # set this to the name of your AKS cluster
   REGISTRY_URL: registry16012026.azurecr.io           # set this to the URL of your registry
   # If you bake using helm:
@@ -62,7 +62,7 @@ jobs:
         helm-version: 'latest'
       id: bake
 
-      
+
     - name: Deploys application
       uses: Azure/k8s-deploy@dd4bbd13a5abd2fc9ca8bdcb8aee152bb718fa78
       with:
